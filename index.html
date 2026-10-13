@@ -35,6 +35,29 @@
     }
     .page { display: flex; gap: 36px; max-width: 1060px; width: 100%; align-items: flex-start; }
 
+
+    /* ── Décor de fond ── */
+    .bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+    .bg::before { content: ""; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(79, 70, 229, .16) 1.2px, transparent 1.4px); background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%); }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; animation: float 18s ease-in-out infinite alternate; }
+    .b1 { width: 420px; height: 420px; background: #a5b4fc; top: -120px; left: -100px; }
+    .b2 { width: 380px; height: 380px; background: #f0abfc; bottom: -120px; right: -80px; animation-delay: -6s; }
+    .b3 { width: 300px; height: 300px; background: #fde68a; top: 40%; left: 45%; opacity: .4; animation-delay: -12s; }
+    .b4 { width: 260px; height: 260px; background: #93c5fd; bottom: 10%; left: 8%; opacity: .4; animation-delay: -3s; }
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, -40px) scale(1.12); }
+      100% { transform: translate(-40px, 50px) scale(.95); }
+    }
+    .shape { position: absolute; opacity: .5; animation: drift 14s ease-in-out infinite alternate; }
+    .s1 { top: 14%; right: 9%; width: 46px; height: 46px; border: 3px solid #c084fc; border-radius: 12px; transform: rotate(20deg); }
+    .s2 { bottom: 18%; left: 4%; width: 0; height: 0; border-left: 22px solid transparent; border-right: 22px solid transparent; border-bottom: 38px solid #f9a8d4; animation-delay: -5s; }
+    .s3 { top: 62%; right: 4%; width: 30px; height: 30px; border-radius: 50%; border: 3px solid #818cf8; animation-delay: -9s; }
+    .s4 { top: 6%; left: 38%; font: 700 22px/1 "Bricolage Grotesque", sans-serif; color: #a78bfa; animation-delay: -2s; }
+    @keyframes drift { to { transform: translateY(-26px) rotate(45deg); } }
+
     /* ── Profil ── */
     .profile { flex: 0 0 230px; display: flex; flex-direction: column; gap: 14px; position: sticky; top: 40px; }
     .avatar-wrap { width: 118px; height: 118px; border-radius: 50%; padding: 4px;
@@ -125,6 +148,10 @@
   </style>
 </head>
 <body>
+  <div class="bg" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="blob b4"></span>
+    <span class="shape s1"></span><span class="shape s2"></span><span class="shape s3"></span><span class="shape s4">&lt;/&gt;</span>
+  </div>
   <main class="page">
 
     <!-- Profil -->
