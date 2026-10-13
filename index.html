@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ensar Pala · Étudiant développeur</title>
+  <meta name="description" content="Ensar Pala, étudiant en BUT Informatique à l'IUT de Laval. En recherche de stage en développement à Rennes, du 12 avril au 4 juin 2027.">
+  <link rel="icon" type="image/jpeg" href="photo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f4f1fb;
+      --ink: #1b1530;
+      --muted: #6b6582;
+      --line: #e6e0f3;
+      --indigo: #4f46e5;
+      --violet: #9333ea;
+      --pink: #ec4899;
+      --amber: #f59e0b;
+      --green: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, #e0e7ff 0, transparent 40%),
+        radial-gradient(circle at 90% 90%, #fce7f3 0, transparent 40%),
+        var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 40px 20px;
+    }
+    .page { display: flex; gap: 36px; max-width: 1060px; width: 100%; align-items: flex-start; }
+
+    /* ── Profil ── */
+    .profile { flex: 0 0 230px; display: flex; flex-direction: column; gap: 14px; position: sticky; top: 40px; }
+    .avatar-wrap { width: 118px; height: 118px; border-radius: 50%; padding: 4px;
+      background: conic-gradient(var(--indigo), var(--violet), var(--pink), var(--amber), var(--indigo));
+      animation: spin 8s linear infinite; }
+    .avatar { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #fff;
+      animation: spin 8s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-family: "Bricolage Grotesque", sans-serif; font-size: 2.1rem; line-height: 1.02; letter-spacing: -.5px; }
+    h1 span { background: linear-gradient(90deg, var(--violet), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .bio { font-size: .92rem; color: var(--muted); line-height: 1.55; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { font-size: .74rem; font-weight: 600; padding: 4px 11px; border-radius: 999px; background: #fff; color: #4b4566; border: 1px solid var(--line); }
+    .status { display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+      font-size: .8rem; font-weight: 600; color: #14532d; background: #dcfce7; border-radius: 999px; padding: 7px 13px; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .3; } }
+
+    /* ── Grille bento ── */
+    .grid { flex: 1; min-width: 0; width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .card { min-width: 0; background: #fff; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 8px;
+      box-shadow: 0 2px 10px rgba(60, 40, 120, .07); color: inherit; text-decoration: none; overflow: hidden;
+      transition: transform .2s ease, box-shadow .2s ease; opacity: 0; transform: translateY(14px); animation: rise .6s ease forwards; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(60, 40, 120, .14); }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+    .grid .card:nth-child(2) { animation-delay: .06s } .grid .card:nth-child(3) { animation-delay: .12s }
+    .grid .card:nth-child(4) { animation-delay: .18s } .grid .card:nth-child(5) { animation-delay: .24s }
+    .grid .card:nth-child(6) { animation-delay: .3s }  .grid .card:nth-child(7) { animation-delay: .36s }
+    .grid .card:nth-child(8) { animation-delay: .42s } .grid .card:nth-child(9) { animation-delay: .48s } .grid .card:nth-child(10) { animation-delay: .54s } .grid .card:nth-child(11) { animation-delay: .6s }
+    .span2 { grid-column: span 2; } .span4 { grid-column: span 4; }
+    .icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-size: 1.15rem; }
+    .card h2 { font-size: 1.02rem; font-weight: 700; }
+    .sub { font-size: .8rem; color: var(--muted); }
+    .txt { font-size: .86rem; color: #4b4566; line-height: 1.5; }
+    .btn { margin-top: auto; display: inline-flex; align-items: center; gap: 7px; width: fit-content;
+      font-size: .82rem; font-weight: 700; color: #fff; padding: 9px 16px; border-radius: 999px; text-decoration: none; }
+    .row { display: flex; align-items: center; gap: 12px; }
+
+    /* Carte stage */
+    .stage { background: linear-gradient(135deg, var(--indigo), var(--violet) 55%, var(--pink)); color: #fff; position: relative; }
+    .stage::after { content: ""; position: absolute; right: -40px; top: -40px; width: 170px; height: 170px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); }
+    .stage .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #fde68a; }
+    .stage h2 { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.7rem; line-height: 1.1; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 6px 0 4px; }
+    .fact { background: rgba(255,255,255,.16); border-radius: 14px; padding: 10px; font-size: .78rem; line-height: 1.35; }
+    .fact b { display: block; font-size: .95rem; }
+    .stage .btn { background: #fff; color: var(--violet); }
+
+    .github { background: #f6f5f9; } .github .icon { background: #1b1530; color: #fff; } .github .btn { background: #1b1530; }
+    .letter { background: #ecfeff; } .letter .icon { background: #cffafe; color: #0891b2; } .letter .btn { background: #0891b2; }
+    .cv { background: #fff7ed; } .cv .icon { background: #ffedd5; color: #ea580c; } .cv .btn { background: #ea580c; }
+    .mail { background: #eef2ff; } .mail .icon { background: #e0e7ff; color: var(--indigo); } .mail .btn { background: var(--indigo); }
+    .skills .icon { background: #f3e8ff; color: var(--violet); }
+    .skills img { width: 100%; max-width: 100%; height: auto; margin-top: 4px; }
+    .projects { background: #fdf2f8; } .projects .icon { background: #fce7f3; color: #db2777; }
+    .proj { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 4px; }
+    .proj div { background: #fff; border-radius: 14px; padding: 12px; font-size: .78rem; color: var(--muted); line-height: 1.4; }
+    .proj b { display: block; color: var(--ink); font-size: .86rem; margin-bottom: 3px; }
+    .rocontrol { background: linear-gradient(135deg, #1e1b4b, #312e81); color: #fff; }
+    .rocontrol .icon { background: #5865f2; color: #fff; } .rocontrol .sub { color: #c7d2fe; } .rocontrol .sub a { color: #fde68a; }
+    .rocontrol .txt { color: #e0e7ff; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 4px 0; }
+    .stats div { background: rgba(255,255,255,.1); border-radius: 14px; padding: 12px; font-size: .78rem; color: #c7d2fe; }
+    .stats b { display: block; font-family: "Bricolage Grotesque", sans-serif; font-size: 1.7rem; color: #fff; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; } .chips span { font-size: .72rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.14); }
+    .proj em { display: block; font-style: normal; font-size: .72rem; font-weight: 600; color: var(--violet); margin-top: 5px; }
+    .school .icon { background: #ecfdf5; color: #059669; }
+    .langs .icon { background: #fef9c3; color: #ca8a04; }
+    .quote { background: #fffbeb; justify-content: center; text-align: center; }
+    .quote p { font-family: "Bricolage Grotesque", sans-serif; font-size: 1.15rem; color: #92400e; }
+    .quote i { color: var(--amber); font-size: 1.4rem; }
+
+    footer { grid-column: span 4; text-align: center; font-size: .76rem; color: var(--muted); padding-top: 6px; }
+
+    @media (max-width: 860px) {
+      .page { flex-direction: column; }
+      .profile { position: static; flex: none; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .span4, footer { grid-column: span 2; }
+    }
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
+      .span2, .span4, footer { grid-column: span 1; }
+      .facts, .proj { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } .card { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- Profil -->
+    <aside class="profile">
+      <div class="avatar-wrap"><img class="avatar" src="photo.jpg" alt="Photo d'Ensar Pala"></div>
+      <h1>Ensar<br><span>Pala</span></h1>
+      <p class="bio">Étudiant en BUT Informatique, 2e année, à l'IUT de Laval.<br>J'aime construire des outils que de vrais utilisateurs utilisent : bots, sites et applis.</p>
+      <div class="tags">
+        <span class="tag">Développeur</span>
+        <span class="tag">Java</span>
+        <span class="tag">Web</span>
+        <span class="tag">Bases de données</span>
+        <span class="tag">Bots Discord</span>
+      </div>
+      <span class="status"><span class="dot"></span>Recherche un stage</span>
+    </aside>
+
+    <!-- Cartes -->
+    <section class="grid">
+
+      <article class="card stage span4">
+        <span class="kicker">🎯 Disponible pour un stage</span>
+        <h2>Je cherche un stage en développement</h2>
+        <div class="facts">
+          <div class="fact"><b>📅 12 avril → 4 juin 2027</b>8 semaines minimum</div>
+          <div class="fact"><b>📍 Rennes</b>et 20 min autour</div>
+          <div class="fact"><b>💻 Développement</b>web, logiciel, bases de données</div>
+        </div>
+        <a class="btn" href="mailto:ensar.pala.etu@univ-lemans.fr?subject=Stage%202027"><i class="fa-solid fa-paper-plane"></i> Me proposer un stage</a>
+      </article>
+
+      <article class="card rocontrol span4">
+        <div class="row">
+          <div class="icon"><i class="fa-brands fa-discord"></i></div>
+          <div><h2>RoControl · mon projet phare</h2><span class="sub">Bot Discord SaaS pour gérer des groupes Roblox · <a href="https://rocontrol.ecloudserv.fr" target="_blank" rel="noopener">rocontrol.ecloudserv.fr</a></span></div>
+        </div>
+        <p class="txt">Vérification des membres, rôles synchronisés avec les rangs Roblox, outils de modération, suivi d'activité en jeu et dashboard web. Je l'ai conçu et je le développe seul, il tourne en production 24h/24.</p>
+        <div class="stats">
+          <div><b data-count="43">43</b>serveurs Discord</div>
+          <div><b data-count="21">21</b>groupes Roblox</div>
+          <div><b data-count="2638">2 638</b>membres synchronisés</div>
+          <div><b data-count="85">85</b>fichiers de tests</div>
+        </div>
+        <div class="chips"><span>TypeScript</span><span>discord.js</span><span>Prisma</span><span>SQLite</span><span>Vitest</span><span>OAuth</span></div>
+      </article>
+
+      <a class="card github" href="https://github.com/Northeeen" target="_blank" rel="noopener">
+        <div class="icon"><i class="fa-brands fa-github"></i></div>
+        <h2>GitHub</h2>
+        <span class="sub">@Northeeen</span>
+        <span class="btn"><i class="fa-solid fa-code-branch"></i> Voir</span>
+      </a>
+
+      <a class="card cv" href="CV_Ensar_PALA.pdf" target="_blank" rel="noopener">
+        <div class="icon"><i class="fa-solid fa-file-lines"></i></div>
+        <h2>Mon CV</h2>
+        <span class="sub">CV · PDF 1 page</span>
+        <span class="btn"><i class="fa-solid fa-download"></i> Ouvrir</span>
+      </a>
+
+      <a class="card letter" href="Lettre_Motivation_Ensar_PALA.pdf" target="_blank" rel="noopener">
+        <div class="icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+        <h2>Ma lettre</h2>
+        <span class="sub">Lettre de motivation</span>
+        <span class="btn"><i class="fa-solid fa-eye"></i> Lire</span>
+      </a>
+
+      <article class="card langs">
+        <div class="icon"><i class="fa-solid fa-language"></i></div>
+        <h2>Langues</h2>
+        <span class="sub">🇫🇷 Français · 🇹🇷 Turc<br>🇬🇧 Anglais B2</span>
+      </article>
+
+
+      <article class="card skills span2">
+        <div class="row">
+          <div class="icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div><h2>Mes outils</h2><span class="sub">ce que j'utilise au quotidien</span></div>
+        </div>
+        <img src="https://skillicons.dev/icons?i=java,python,ts,js,nodejs,html,css,mysql,prisma,discordjs,lua,git,idea,vscode,linux&perline=8" alt="Java, Python, TypeScript, JavaScript, Node.js, HTML, CSS, SQL, Prisma, discord.js, Lua, Git, IntelliJ, VS Code, Linux">
+      </article>
+
+      <article class="card school span2">
+        <div class="row">
+          <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div><h2>BUT Informatique</h2><span class="sub">IUT de Laval · 2025 → 2028</span></div>
+        </div>
+        <p class="txt">Programmation, bases de données, web, réseaux, gestion de projet (GANTT, PERT).</p>
+      </article>
+
+      <article class="card projects span4">
+        <div class="row">
+          <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+          <div><h2>Mes autres projets</h2><span class="sub">perso, pour des entreprises et pendant mon BUT</span></div>
+        </div>
+        <div class="proj">
+          <div><b>🎵 Bot musique Discord</b>Lecture de musique en vocal, commandes de modération et d'administration<em>discord.js · Node.js</em></div>
+          <div><b>🧱 Site de CEP Constructions</b>Site vitrine pour une entreprise de maçonnerie : services, réalisations, galerie, contact<em>HTML · CSS · JS</em></div>
+          <div><b>📱 Appli de suivi de chantiers</b>Appli Android pour la même entreprise : rapports avec photos, rôles, stats, export PDF<em>Android · Firebase</em></div>
+          <div><b>🍽️ Menu QR pour restaurants</b>Projet d'entreprise : menu QR et commande à table pour les restos de Rennes, site complet avec démo<em>HTML · CSS · JS</em></div>
+          <div><b>📈 Simulateur de trading crypto</b>Analyse des marchés en temps réel et simulation de stratégies, sans argent réel<em>Python · interface graphique</em></div>
+          <div><b>🎮 Serveur Garry's Mod RP</b>Création et administration d'un serveur roleplay : addons, base de données, carte personnalisée<em>Lua · SQL</em></div>
+          <div><b>🗄️ Droits d'une base de données</b>MCD, rôles et droits SQL, appli JavaFX, stats en Python<em>SAÉ · Java · SQL</em></div>
+          <div><b>🧭 Solveur de donjons</b>Graphes, parcours DFS et A*, tests unitaires<em>SAÉ · Java</em></div>
+          <div><b>🐦 Flappy Bird en console</b>Le jeu jouable directement dans l'invite de commandes Windows<em>Python</em></div>
+        </div>
+      </article>
+
+      <a class="card mail span2" href="mailto:ensar.pala.etu@univ-lemans.fr">
+        <div class="row">
+          <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+          <div><h2>Me contacter</h2><span class="sub">ensar.pala.etu@univ-lemans.fr</span></div>
+        </div>
+        <p class="txt">Une question, une offre de stage ? Je réponds vite.</p>
+        <span class="btn"><i class="fa-solid fa-paper-plane"></i> Envoyer un mail</span>
+      </a>
+
+
+      <article class="card quote span2">
+        <i class="fa-solid fa-quote-left"></i>
+        <p>Toujours prêt à apprendre.</p>
+      </article>
+
+
+      <footer>© 2026 · Ensar Pala · Fait avec ❤️ à Rennes</footer>
+    </section>
+  </main>
+  <script>
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.querySelectorAll('[data-count]').forEach(el => {
+      const end = +el.dataset.count, t0 = performance.now();
+      const step = t => { const k = Math.min((t - t0) / 1400, 1); el.textContent = Math.round(end * (1 - Math.pow(1 - k, 3))).toLocaleString('fr-FR'); if (k < 1) requestAnimationFrame(step); };
+      requestAnimationFrame(step);
+    });
+  </script>
+</body>
+</html>
